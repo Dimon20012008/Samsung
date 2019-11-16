@@ -1,0 +1,82 @@
+interface Moveable {
+	void move(float dx, float dy) ;
+	void resize(float koeff);
+}
+public class Figure {    
+	public float x;
+	public float y;
+	
+	Figure(float x, float y){
+		this.x = x;
+		this.y= y;
+	}
+
+}
+public class Rectangle extends Figure implements Moveable{
+	public float height ;
+	public float width ;
+	Rectangle(float x, float y,float height, float width) {
+		super(x, y);
+		this.height = height;
+		this.width = width;
+		
+	}
+	
+	public float getArea() {
+		return this.height*this.width;
+	}
+	public float getPerimeter() {
+		return  (this.height+this.width)*2;
+	}
+
+	public void move(float dx, float dy) {
+		
+		this.x+=dx;
+		this.y+=dy;
+
+
+	}
+
+	public void resize(float koeff) {
+		this.height *= koeff;
+		this.width *= koeff;
+	}
+	public String toString() {
+		return "Rectangle" +"\n" + "Center: (" + (this.x + (this.width/2))+", "+ (this.y + (this.height/2))+")" +"\n" +"Height: "+this.height+"\n" +"Width: "+this.width;
+		
+	}
+	
+}
+public  class Circle extends Figure implements Moveable{
+	public float radius ;
+
+	 Circle(float x, float y, float radius) {
+		super(x, y);
+		this.radius=radius;
+		
+	}
+	public float getArea() {
+			return (float) ((float) Math.PI * Math.pow( this.radius, 2));
+	}
+	public float getPerimeter() {
+		return (float) ((float) 2 * Math.PI * this.radius) ;
+	}
+	
+	public void move(float dx, float dy) {
+		
+		this.x+=dx;
+		this.y+=dy;
+
+
+	}
+	
+	public void resize(float koeff) {
+		this.radius*=koeff;
+	}
+	public String toString() {
+		return "Circle" +"\n" + "Center: (" + this.x+", "+ this.y+")" +"\n" +"Radius: "+this.radius;
+		
+	}
+	
+
+}
